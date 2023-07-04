@@ -12,11 +12,17 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + './public/index.html')
  });
-
+let connectedPeers = [];
  io.on('connection', (socket) => {
-    console.log('a user connected');
+  
     console.log(socket.id);
+    connectedPeers.push(socket.id);
     socket.on('disconnect', () => {
+     const newConnectedPeers = connectedPeers.filter((peer) => {
+        return peer != socket.id;
+     })
+
+     connectedPeers = newConnectedPeers;
     console.log('user disconnected');
     })
 }
