@@ -20,6 +20,7 @@ export const registerSocketEvents = (socket) => {
 
 export const sendPreOffer = (data) => {
     console.log('emitting to server pre offer server');
+    
     socketIO.emit('pre-offer', data);
    
 }

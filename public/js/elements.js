@@ -54,3 +54,49 @@ export const getIncomingCallDialog = (callTypeInfo,
         return dialog
 
 }
+
+export const getCallingDialog = (rejectCallHandler) => {
+        console.log('ruturning calling dialog for rejecting');
+  
+        const dialog = document.createElement('div');
+        dialog.classList.add('dialog_wrapper');
+        const dialogContent = document.createElement('div');
+        dialogContent.classList.add('dialog_content');
+      
+        const title = document.createElement('p');
+        title.classList.add('dialog_title');
+      
+      
+        title.innerHTML = ` calling `;
+      
+      
+    //   ############################# Image Container #############################
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('dialog_image_container');
+        const image = document.createElement('img');
+        const avatarImagePath = './utils/images/dialogAvatar.png';
+        image.src = avatarImagePath;
+        imageContainer.appendChild(image);
+
+    //  ############################# Buttons Container #############################
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('dialog_button_container');
+
+
+    // #############################Reject Call Button ###################################
+    const rejectCallButton = document.createElement('button');
+    rejectCallButton.classList.add('dialog_reject_call_button');
+    const rejectCallButtonImage = document.createElement('img');
+    rejectCallButtonImage.src = './utils/images/rejectCall.png';
+    rejectCallButtonImage.classList.add('dialog_button_image');
+    rejectCallButton.appendChild(rejectCallButtonImage);
+
+  
+    buttonContainer.appendChild(rejectCallButton);
+        dialog.appendChild(dialogContent);
+        dialogContent.appendChild(title);
+        dialogContent.appendChild(imageContainer);
+        dialogContent.appendChild(buttonContainer);
+      
+        return dialog
+}
