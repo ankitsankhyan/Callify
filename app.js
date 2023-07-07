@@ -40,6 +40,22 @@ let connectedPeers = [];
       }
 
     })
+    
+    socket.on('webRTC-signaling', (data) => {
+    
+     
+        const {connectedUserSocketId} = data;
+        console.log(data, 'inside webRTC signaling');
+        const connectedPeer = connectedPeers.find(
+            (peerSocketId)=> peerSocketId === connectedUserSocketId
+        )
+        if(connectedPeer){
+            console.log('user is connected', data);
+            io.to(connectedUserSocketId).emit('webRTC-signaling', data);
+        }
+        
+    })
+
 
     // ##################### PRE OFFER ANSWER ############################
     socket.on('pre-offer-answer', (data) => {

@@ -6,6 +6,16 @@ export const updatePersonalCode = (personalCode)=>{
     personalCodeParagraph.innerHTML = personalCode;
 }
 
+export const updateLocalVideo = (stream) => {
+  const localVideo = document.getElementById('local_video');
+  
+  localVideo.srcObject = stream;
+ 
+  localVideo.addEventListener('loadedmetadata', ()=>{
+        localVideo.play();
+    });
+}
+
 export const showIncomingCallDialog = (callType, acceptCallHandler, rejectCallHandler) => {
     
     const callTypeInfo = (callType === constants.callType.CHAT_PERSONAL_CODE) ? 'Chat' : 'Video';
@@ -122,3 +132,7 @@ const showElement = (element)=>{
     }
 }
 
+export const updateRemoteVideo = (stream) => {
+    const remoteVideo = document.getElementById("remote_video");
+    remoteVideo.srcObject = stream;
+  };

@@ -9,6 +9,7 @@ import * as constants from './constants.js'
 const socket = io('localhost:3000');
 
 wss.registerSocketEvents(socket);
+webRTCHandler.getLocalPreview();
 const personalCodeCopyButton = document.getElementById('personal_code_copy_button');
 console.log(personalCodeCopyButton);
 personalCodeCopyButton.addEventListener('click', () => {

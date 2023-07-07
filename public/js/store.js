@@ -26,7 +26,11 @@ export const setLocalStream = (stream) => {
         localStream:stream
     };
 }
-
+export const setRemoteStream = (stream) => {
+  state = {
+    ...state,localStream:stream
+  }
+}
 
 export const setAllowConnectionsFromStrangers = (allowConnectionsFromStrangers) => {
     state = {

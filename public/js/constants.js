@@ -12,3 +12,8 @@ export const preOfferAnswer = {
     CALL_UNAVAILABLE: "CALL_UNAVAILABLE",
   };
   
+export const webRTCSignaling = {
+    OFFER: "OFFER",
+    ANSWER: "ANSWER",
+    ICE_CANDIDATE: "ICE_CANDIDATE",
+}
