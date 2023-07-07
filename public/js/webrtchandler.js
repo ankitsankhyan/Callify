@@ -3,8 +3,7 @@ import * as constants from './constants.js';
 import * as ui from './ui.js';
 import * as store from './store.js';
 let connectedUserDetails;
-
-// whom i am calling callee
+// contains the details of the user to whom the request is sent and id is received from input field of the client
 export const sendPreOffer = (calltype, calleePersonalCode)=>{
      connectedUserDetails = {
           calltype,
@@ -24,7 +23,7 @@ export const sendPreOffer = (calltype, calleePersonalCode)=>{
    }
  
 }
-
+// handle when request comes
 export const handlePreOffer = (data) => {
     
    const {calltype, callerSocketId} = data;
@@ -41,7 +40,7 @@ export const handlePreOffer = (data) => {
     
    }
 
-
+// handle case when call is accepted i.e sends a request to the callee
 const acceptCallHandler = () => {
      console.log('call accepted');
    
@@ -50,6 +49,7 @@ const acceptCallHandler = () => {
      // sendPreOfferAnswer(constants.preOfferAnswer.CALL_ACCEPTED);
      // make rtc connection
      }
+// handle case when call is rejected i.e sends a request to the callee
 const rejectCallHandler = () => {
      console.log('call rejected');
      sendPreOfferAnswer(constants.preOfferAnswer.CALL_REJECTED);
@@ -65,6 +65,7 @@ const callingDialogRejectCallHandler = () => {
 
 }
 
+// this is function takes input of the type of action of the user and sends to callee via websocket server
 const sendPreOfferAnswer = (preOfferAnswer) => {
     
    const data = {
@@ -72,12 +73,15 @@ const sendPreOfferAnswer = (preOfferAnswer) => {
      preOfferAnswer:preOfferAnswer
    }
    ui.removeAllDialogs();
+   if(preOfferAnswer === constants.preOfferAnswer.CALL_ACCEPTED){
+      ui.showCallElements(connectedUserDetails.calltype);
+   }
    wss.sendPreOfferAnswer(data);
 }
 
+// receive the answer from the callee and handle it and show in ui
 export const handlePreOfferAnswer = (data) => {
    const {preOfferAnswer} = data;
-   console.log(data);
    ui.removeAllDialogs();
    console.log('pre offer answer came');
    if(preOfferAnswer === constants.preOfferAnswer.CALLEE_NOT_FOUND){
@@ -92,7 +96,7 @@ export const handlePreOfferAnswer = (data) => {
       ui.showInfoDialog(preOfferAnswer);
    }
    if(preOfferAnswer === constants.preOfferAnswer.CALL_ACCEPTED){
-   ui.showInfoDialog(connectedUserDetails.calltype);      
+     ui.showCallElements(connectedUserDetails.calltype);
    }
 
 

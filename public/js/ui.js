@@ -66,6 +66,8 @@ export const showCallElements = (callType) => {
 }
 
 
+
+// show chat elements in the ui
 const showChatCallElements = () => {
     const finishConnectionChatButtonContainer = document.getElementById('finish_chat_button_container');
     showElement(finishConnectionChatButtonContainer);
@@ -74,10 +76,14 @@ const showChatCallElements = () => {
     // block panel
     disableDashboard();
 }
+
+// show video elements in the ui
 const showVideoCallElements = () => {
     const callButtons = document.getElementById('call_buttons');
     // show call elements
     showElement(callButtons);
+    const placeholder = document.getElementById('video_placeholder');
+    hideElement(placeholder);
     const remoteVideo = document.getElementById('remote_video');
     showElement(remoteVideo);
 

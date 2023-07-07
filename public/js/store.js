@@ -7,7 +7,7 @@ let state = {
     screenSharingStream:null,
     allowConnectionsFromStrangers:false,
     screenSharingActive:false,
-  
+    isBusy:false
 
 }
 
