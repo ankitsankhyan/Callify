@@ -3,7 +3,7 @@ const http = require('http');
 const { connect } = require('http2');
 const { connected } = require('process');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const app = express();
 // http server is created to get more control on http requests
 const server = http.createServer(app);
@@ -20,15 +20,17 @@ let connectedPeers = [];
     // ##################### PRE OFFER ############################
     socket.on('pre-offer', (data) => {
         console.log('pre-offer-came');
-      
-      const {calltype, calleePersonalCode} = data;
+       console.log(data);
+      const {callType, calleePersonalCode} = data;
        const connectedPeer = connectedPeers.find((peerSocketId) => {
             return peerSocketId == calleePersonalCode;
          })
+    
         const data2send = {
-            calltype,
+            callType,
             callerSocketId: socket.id
         }
+        console.log(data2send);
       if(connectedPeer && socket.id !== calleePersonalCode){
         io.to(calleePersonalCode).emit('pre-offer', data2send);
             

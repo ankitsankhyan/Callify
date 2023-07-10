@@ -1,55 +1,54 @@
-import * as store from './store.js';
-import * as ui from './ui.js';
-import * as WebRTCHandler from './webrtchandler.js';
-import * as constants from './constants.js';
+import * as store from "./store.js";
+import * as ui from "./ui.js";
+import * as webRTCHandler from "./webrtchandler.js";
+import * as constants from "./constants.js";
+
 let socketIO = null;
- 
+
 export const registerSocketEvents = (socket) => {
-    socket.on('connect', () => {
-       socketIO = socket;
-        store.setSocketId(socket.id);
-        console.log('connected', socket.id);
-        ui.updatePersonalCode(socket.id);
-     })
+  socketIO = socket;
 
-     socket.on('pre-offer', (data) => {
-        console.log('pre-offer-came');
-        console.log(data);
-       WebRTCHandler.handlePreOffer(data);
-        })
+  socket.on("connect", () => {
+    console.log("succesfully connected to socket.io server");
+    store.setSocketId(socket.id);
+    ui.updatePersonalCode(socket.id);
+  });
 
-    socket.on('pre-offer-answer', (data) => {
-        console.log('pre-offer-answer-came');
-        WebRTCHandler.handlePreOfferAnswer(data);
-       
-    })
-// we are receiving webRTC-signaling
+  socket.on("pre-offer", (data) => {
+    console.log("pre-offer came", data);
+    webRTCHandler.handlePreOffer(data);
+  });
 
-    socket.on('webRTC-signaling', (data) => {
-        console.log(data, 'inside webRTC signaling')
-        switch(data.type){
-         case constants.webRTCSignaling.OFFER:
-            WebRTCHandler.handleWebRTCOffer(data);
-            break;
-         case constants.webRTCSignaling.ANSWER:
-            console.log(data);
-            WebRTCHandler.handleWebRTCAnswer(data);
-        default:
-            return
-        }})
-}
+  socket.on("pre-offer-answer", (data) => {
+    webRTCHandler.handlePreOfferAnswer(data);
+  });
 
-export const sendPreOffer = (data) => { 
-    socketIO.emit('pre-offer', data);
-   
-}
+  socket.on("webRTC-signaling", (data) => {
+    switch (data.type) {
+      case constants.webRTCSignaling.OFFER:
+        webRTCHandler.handleWebRTCOffer(data);
+        break;
+      case constants.webRTCSignaling.ANSWER:
+        webRTCHandler.handleWebRTCAnswer(data);
+        break;
+      case constants.webRTCSignaling.ICE_CANDIDATE:
+        webRTCHandler.handleWebRTCCandidate(data);
+        break;
+      default:
+        return;
+    }
+  });
+};
 
-export const sendPreOfferAnswer = (data)=>{
-    socketIO.emit('pre-offer-answer', data);
-}
-export const sendDataUsingWebRTCSignaling =async (data) => {
- 
-    socketIO.emit('webRTC-signaling', data);
+export const sendPreOffer = (data) => {
+  console.log("emmiting to server pre offer event");
+  socketIO.emit("pre-offer", data);
+};
 
-        
-}
+export const sendPreOfferAnswer = (data) => {
+  socketIO.emit("pre-offer-answer", data);
+};
+
+export const sendDataUsingWebRTCSignaling = (data) => {
+  socketIO.emit("webRTC-signaling", data);
+};

@@ -2,7 +2,7 @@ import * as constants from './constants.js';
 import * as elements from './elements.js';
 export const updatePersonalCode = (personalCode)=>{
     const personalCodeParagraph = document.getElementById('personal_code_paragraph');
-   
+   console.log(personalCodeParagraph);
     personalCodeParagraph.innerHTML = personalCode;
 }
 
@@ -103,6 +103,41 @@ const showVideoCallElements = () => {
     disableDashboard();
 }
 
+//   ui call button
+export const appendMessage = (message, right = false) => {
+    const messagesContainer = document.getElementById('messages_container');
+    const messageElement = right ? elements.getRightMessage(message) : elements.getLeftMessage(message);
+    messagesContainer.appendChild(messageElement);
+
+}
+
+export const clearMessenger = () => {
+    const messagesContainer = document.getElementById('messages_container');
+    messagesContainer.querySelectorAll("*").forEach((n)=> n.remove());
+    
+}
+// source of images
+const micOnImgSrc = '../utils/images/mic.png';
+const micOffImgSrc = '../utils/images/micOff.png';
+
+
+export const updateMicButton = (micActive) => {
+  const micButtonImage = document.getElementById("mic_button_image");
+    micButtonImage.src = micActive ? micOnImgSrc : micOffImgSrc;
+
+
+}
+
+// camera images
+const cameraOffImgSrc = '../utils/images/cameraOff.png';
+const cameraOnImgSrc = '../utils/images/camera.png';
+
+// update images
+export const updateCameraButton = (cameraActive) => {
+    const cameraButtonImage = document.getElementById("camera_button_image");
+    console.log(cameraActive, 'camera active');
+    cameraButtonImage.src = cameraActive ? cameraOnImgSrc : cameraOffImgSrc;
+}
 
 // ui helper functions
 const enableDashboard = () => {
@@ -136,3 +171,6 @@ export const updateRemoteVideo = (stream) => {
     const remoteVideo = document.getElementById("remote_video");
     remoteVideo.srcObject = stream;
   };
+
+
+

@@ -1,58 +1,56 @@
 let state = {
-    socketId:null,
-    // gets access to microphone and camera
-    localStream:null,
-    // gets access to remote stream i.e stream of other user
-    remoteStream:null,
-    screenSharingStream:null,
-    allowConnectionsFromStrangers:false,
-    screenSharingActive:false,
-    isBusy:false
-
-}
-
-export const setSocketId = (socketId) => {
-
-    state={
-        ...state,
-        socketId
-    };
-
-}
-
-export const setLocalStream = (stream) => {
+    socketId: null,
+    localStream: null,
+    remoteStream: null,
+    screenSharingActive: false,
+    screenSharingStream: null,
+    allowConnectionsFromStrangers: false,
+  };
+  
+  export const setSocketId = (socketId) => {
     state = {
-        ...state,
-        localStream:stream
+      ...state,
+      socketId,
     };
-}
-export const setRemoteStream = (stream) => {
-  state = {
-    ...state,localStream:stream
-  }
-}
-
-export const setAllowConnectionsFromStrangers = (allowConnectionsFromStrangers) => {
+    console.log(state);
+  };
+  
+  export const setLocalStream = (stream) => {
     state = {
-        ...state,
-        allowConnectionsFromStrangers
+      ...state,
+      localStream: stream,
     };
-}
-
-export const setScreenSharingActive = (screenSharingActive)=>{
+  };
+  
+  export const setAllowConnectionsFromStrangers = (allowConnection) => {
     state = {
-        ...state,
-        screenSharingActive
-    }
-}
-
-export const setScreenSharingStream = (stream)=>{
-    state={
-        ...state,
-        stream
-    }
-}
-
-export const getState= ()=>{
+      ...state,
+      allowConnectionsFromStrangers: allowConnection,
+    };
+  };
+  
+  export const setScreenSharingActive = (screenSharingActive) => {
+    state = {
+      ...state,
+      screenSharingActive,
+    };
+  };
+  
+  export const setScreenSharingStream = (stream) => {
+    state = {
+      ...state,
+      screenSharingStream: stream,
+    };
+  };
+  
+  export const setRemoteStream = (stream) => {
+    state = {
+      ...state,
+      remoteStream: stream,
+    };
+  };
+  
+  export const getState = () => {
     return state;
-}
+  };
+  
