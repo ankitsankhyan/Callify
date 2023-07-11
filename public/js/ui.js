@@ -1,5 +1,6 @@
 import * as constants from './constants.js';
 import * as elements from './elements.js';
+import { startRecording } from './recordingUtils.js';
 export const updatePersonalCode = (personalCode)=>{
     const personalCodeParagraph = document.getElementById('personal_code_paragraph');
    console.log(personalCodeParagraph);
@@ -114,7 +115,7 @@ export const appendMessage = (message, right = false) => {
 export const clearMessenger = () => {
     const messagesContainer = document.getElementById('messages_container');
     messagesContainer.querySelectorAll("*").forEach((n)=> n.remove());
-    
+
 }
 // source of images
 const micOnImgSrc = '../utils/images/mic.png';
@@ -138,7 +139,37 @@ export const updateCameraButton = (cameraActive) => {
     console.log(cameraActive, 'camera active');
     cameraButtonImage.src = cameraActive ? cameraOnImgSrc : cameraOffImgSrc;
 }
+// recording buttons
+export const showRecordingPanel = () => {
+    const recordingButtons = document.getElementById('video_recording_buttons');
+    showElement(recordingButtons);
+    const startRecordingButton = document.getElementById('start_recording_button');
+    console.log(startRecordingButton, recordingButtons);
+    hideElement(startRecordingButton);
+}
 
+export const resetRecordingButtons = () => {
+    const startRecordingButton = document.getElementById('start_recording_button');
+    
+    const recordingButtons = document.getElementById('video_recording_buttons');
+    console.log(startRecording, recordingButtons);
+    showElement(startRecordingButton);
+    hideElement(recordingButtons);
+
+}
+
+export const switchRecordingButton = (switchForResumeButton)=>{
+    const resumeButton = document.getElementById('resume_recording_button');
+    const pauseButton = document.getElementById('pause_recording_button');
+
+    if(switchForResumeButton){
+        hideElement(pauseButton);
+        showElement(resumeButton);
+    }else{
+        hideElement(resumeButton);
+        showElement(pauseButton);
+    }
+}
 // ui helper functions
 const enableDashboard = () => {
    const dashboardBlocker = document.getElementById('dashboard_blur');
