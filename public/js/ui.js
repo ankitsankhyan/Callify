@@ -76,7 +76,9 @@ export const showCallElements = (callType) => {
     }
 }
 
+export const hideCallElements = ()=>{
 
+}
 
 // show chat elements in the ui
 const showChatCallElements = () => {
@@ -86,6 +88,15 @@ const showChatCallElements = () => {
     showElement(newMessageInput);
     // block panel
     disableDashboard();
+}
+
+const hideChatCallElements = ()=>{
+    const finishConnectionChatButtonContainer = document.getElementById('finish_chat_button_container');
+    hideElement(finishConnectionChatButtonContainer);
+    const newMessageInput = document.getElementById('new_message');
+    hideElement(newMessageInput);
+
+    enableDashboard();
 }
 
 // show video elements in the ui
@@ -104,6 +115,20 @@ const showVideoCallElements = () => {
     disableDashboard();
 }
 
+const hideVideoCallElements = () => {
+    const callButtons = document.getElementById('call_buttons');
+    // show call elements
+    hideElement(callButtons);
+    const placeholder = document.getElementById('video_placeholder');
+    hideElement(placeholder);
+    const remoteVideo = document.getElementById('remote_video');
+    hideElement(remoteVideo);
+
+    const newMessageInput = document.getElementById('new_message');
+    hideElement(newMessageInput);
+    // block panel
+    enableDashboard();
+}
 //   ui call button
 export const appendMessage = (message, right = false) => {
     const messagesContainer = document.getElementById('messages_container');
@@ -170,6 +195,37 @@ export const switchRecordingButton = (switchForResumeButton)=>{
         showElement(pauseButton);
     }
 }
+// ui after hanged up
+export const updateUIAfterHangUp = (callType) => {
+    console.log('update ui after hang up');
+  enableDashboard();
+  if(callType === constants.callType.CHAT_PERSONAL_CODE ||
+     callType === constants.callType.CHAT_STRANGER){
+        const callButtons = document.getElementById('call_buttons');
+        hideElement(callButtons);
+
+    }else{
+        const chatCallButtons = document.getElementById('call_buttons');
+        hideElement(chatCallButtons);
+    }
+
+    const newMessageInput = document.getElementById('new_message');
+    clearMessenger();
+    hideElement(newMessageInput);
+    updateMicButton(false);
+    updateCameraButton(false);
+
+    // hide remote video and show placeholder
+    const placeholder = document.getElementById('video_placeholder');
+    showElement(placeholder);
+    const remoteVideo = document.getElementById('remote_video');
+    hideElement(remoteVideo);
+
+    removeAllDialogs();
+
+
+}
+
 // ui helper functions
 const enableDashboard = () => {
    const dashboardBlocker = document.getElementById('dashboard_blur');

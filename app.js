@@ -73,6 +73,15 @@ let connectedPeers = [];
         }
     });
     
+    socket.on('user-hanged-up', (data) => {
+       const {connectedUserSocketId} = data;
+       const connectedPeer = connectedPeers.find(
+              (peerSocketId)=> peerSocketId === connectedUserSocketId );
+        if(connectedPeer){
+            io.to(connectedUserSocketId).emit('user-hanged-up');
+        }
+        
+    })
 
 
     

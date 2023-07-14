@@ -22,6 +22,7 @@ export const startRecording = () => {
 
 const handleDataAvailable = (e) => {
     if(e.data.size > 0){
+        console.log('pushing chunk and calling download');
         recordedChunks.push(e.data);
         downloadRecordedVideo();
     }
@@ -54,7 +55,9 @@ const downloadRecordedVideo = async() => {
 }
 
 export const stopRecording = () => {
+    
     console.log('stop recording');
     mediaRecorder.stop();
+    // Note this triggers the ondataavailable event which calls handleDataAvailable
     downloadRecordedVideo();
 }

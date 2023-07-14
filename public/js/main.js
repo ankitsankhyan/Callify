@@ -114,11 +114,7 @@ sendMessageButton.addEventListener("click", () => {
 
 
 
-const hang_up_button = document.getElementById("hang_up_button");
 
-hang_up_button.addEventListener("click", () => {
- webRTCHandler.closePeerConnection();
-});
 
 // recording
 
@@ -149,4 +145,20 @@ resumeRecordingButton.addEventListener('click', () => {
   console.log('resume recording clicked');
   recordingUtils.resumeRecording();
   ui.switchRecordingButton(false);
+});
+
+
+const hangUpVideoButton = document.getElementById('hang_up_button');
+console.log(hangUpVideoButton, '++++++++++++++++++++++');
+hangUpVideoButton.addEventListener('click', () => {
+ 
+  webRTCHandler.handleHangUp();
+  // webRTCHandler.closePeerConnectionAndResetState();
+  webRTCHandler.closePeerConnectionAndResetState();
+});
+
+const hangUpChatButton = document.getElementById('finish_chat_call_button');
+hangUpChatButton.addEventListener('click', () => {
+ 
+  webRTCHandler.handleHangUp();
 });
