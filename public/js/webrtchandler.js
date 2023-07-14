@@ -328,4 +328,10 @@ export const closePeerConnectionAndResetState = ()=>{
 
   }
 
+  if(connectedUserDetails.callType === constants.callType.CHAT_PERSONAL_CODE ||
+    connectedUserDetails.callType === constants.callType.CHAT_STRANGER){
+      ui.updateUIAfterHangUp(connectedUserDetails.callType);
+      connectedUserDetails = null;
+  }
+
 }

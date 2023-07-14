@@ -21,7 +21,6 @@ export const showIncomingCallDialog = (callType, acceptCallHandler, rejectCallHa
     
     const callTypeInfo = (callType === constants.callType.CHAT_PERSONAL_CODE) ? 'Chat' : 'Video';
 
-    console.log('call type info', callTypeInfo);
      const incomingCallDialog = elements.getIncomingCallDialog(callTypeInfo, acceptCallHandler, rejectCallHandler);
 
      
@@ -111,7 +110,9 @@ const showVideoCallElements = () => {
 
     const newMessageInput = document.getElementById('new_message');
     showElement(newMessageInput);
+    clearMessenger();
     // block panel
+
     disableDashboard();
 }
 
@@ -120,7 +121,7 @@ const hideVideoCallElements = () => {
     // show call elements
     hideElement(callButtons);
     const placeholder = document.getElementById('video_placeholder');
-    hideElement(placeholder);
+    showElement(placeholder);
     const remoteVideo = document.getElementById('remote_video');
     hideElement(remoteVideo);
 
@@ -128,6 +129,7 @@ const hideVideoCallElements = () => {
     hideElement(newMessageInput);
     // block panel
     enableDashboard();
+    clearMessenger();
 }
 //   ui call button
 export const appendMessage = (message, right = false) => {
@@ -201,27 +203,27 @@ export const updateUIAfterHangUp = (callType) => {
   enableDashboard();
   if(callType === constants.callType.CHAT_PERSONAL_CODE ||
      callType === constants.callType.CHAT_STRANGER){
-        const callButtons = document.getElementById('call_buttons');
-        hideElement(callButtons);
+         hideChatCallElements();
 
     }else{
-        const chatCallButtons = document.getElementById('call_buttons');
-        hideElement(chatCallButtons);
+        // const chatCallButtons = document.getElementById('finish_chat_button_container');
+        // hideElement(chatCallButtons);
+        hideVideoCallElements();
     }
 
-    const newMessageInput = document.getElementById('new_message');
+    // const newMessageInput = document.getElementById('new_message');
     clearMessenger();
-    hideElement(newMessageInput);
-    updateMicButton(false);
-    updateCameraButton(false);
+    // hideElement(newMessageInput);
+    // updateMicButton(false);
+    // updateCameraButton(false);
 
-    // hide remote video and show placeholder
-    const placeholder = document.getElementById('video_placeholder');
-    showElement(placeholder);
-    const remoteVideo = document.getElementById('remote_video');
-    hideElement(remoteVideo);
+    // // hide remote video and show placeholder
+    // const placeholder = document.getElementById('video_placeholder');
+    // showElement(placeholder);
+    // const remoteVideo = document.getElementById('remote_video');
+    // hideElement(remoteVideo);
 
-    removeAllDialogs();
+    // removeAllDialogs();
 
 
 }

@@ -161,4 +161,5 @@ const hangUpChatButton = document.getElementById('finish_chat_call_button');
 hangUpChatButton.addEventListener('click', () => {
  
   webRTCHandler.handleHangUp();
+  webRTCHandler.closePeerConnectionAndResetState();
 });
