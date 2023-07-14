@@ -131,6 +131,13 @@ const hideVideoCallElements = () => {
     enableDashboard();
     clearMessenger();
 }
+
+export const showVideoButtons = ()=>{
+    const personalButton = document.getElementById('personal_code_video_button');
+    showElement(personalButton);
+    const stangerVideoButton = document.getElementById('stranger_video_button');
+    showElement(stangerVideoButton);
+}
 //   ui call button
 export const appendMessage = (message, right = false) => {
     const messagesContainer = document.getElementById('messages_container');
