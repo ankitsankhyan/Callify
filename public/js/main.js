@@ -5,6 +5,8 @@ import * as constants from "./constants.js";
 import * as ui from "./ui.js";
 import * as recordingUtils from "./recordingUtils.js";
 import * as strangerUtils from "./strangerutils.js";
+
+
 // initialization of socketIO connection
 const socket = io("/");
 wss.registerSocketEvents(socket);
@@ -185,3 +187,46 @@ hangUpChatButton.addEventListener('click', () => {
   webRTCHandler.handleHangUp();
   webRTCHandler.closePeerConnectionAndResetState();
 });
+
+
+// making responsive
+
+
+
+const closeDashboardButton = document.getElementById('close_dashboard_button');
+closeDashboardButton.addEventListener('click', () => {
+  const dashboardContainer= document.getElementById('dashboardContainer');
+  console.log(dashboardContainer, '++++++++++++++++++++++');
+  dashboardContainer.classList.add('display_none');
+  const hamburgerMenu = document.getElementById('hamburger_menu');
+  hamburgerMenu.classList.remove('display_none');
+});
+
+const hamburgerMenu = document.getElementById('hamburger_menu');
+hamburgerMenu.addEventListener('click', () => {
+  const dashboardContainer= document.getElementById('dashboardContainer');
+  console.log(dashboardContainer, '++++++++++++++++++++++');
+  dashboardContainer.classList.remove('display_none');
+  const hamburgerMenu = document.getElementById('hamburger_menu');
+  hamburgerMenu.classList.add('display_none');
+});
+
+
+const hideChatButton = document.getElementById('hide_chat_button');
+hideChatButton.addEventListener('click', () => {
+  const messengerContainer = document.getElementById('messenger_container');
+  messengerContainer.classList.add('display_none');
+  const showChat = document.getElementById('chat_visible_button');
+  console.log(showChat, '++++++++++++++++++++++');
+  showChat.classList.remove('display_none');
+});
+
+const showChatButton = document.getElementById('chat_visible_button');
+showChatButton.addEventListener('click', () => {
+  const messengerContainer = document.getElementById('messenger_container');
+  messengerContainer.classList.remove('display_none');
+  const showChat = document.getElementById('chat_visible_button');
+  console.log(showChat, '++++++++++++++++++++++');
+  showChat.classList.add('display_none');
+}
+);

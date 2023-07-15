@@ -4,10 +4,14 @@
         <link rel='stylesheet' href='./css/style.css'>
     </head>
     <body>
-        <div class='main_container'>
-        <div class='dashboard_container'>
+        
+        <div class='main_container' >
+          
+        <div class='dashboard_container' id="dashboardContainer" style="background-color: pink;">
+           
             <div class='logo_container'>
                 <img src='./utils/images/logo.png'></img>
+                <img src="./utils/images/cross.png" id="close_dashboard_button" class="closeTab" height="30px" width="30px">
             </div>
             <div>
                 <div class='description_container'>
@@ -62,12 +66,15 @@
                 </div>
                 <div class='dashboard_blur display_none' id='dashboard_blur'></div>
             </div>
-        <div class='call_container'>
+        <div class='call_container' >
+            <div class="hamburger display_none" id="hamburger_menu">
+                <img src="./utils/images/hamburger.png" height="30px" width="30px">
+            </div>
             <div class='videos_container'>
                 <div id='video_placeholder' class='videos_placeholder'>
                     <img src='./utils/images/logo.png'></img>
                 </div>
-                <video class='remote_video display_none'  autoplay id='remote_video'></video>
+                <video class='remote_video display_none' style="object-fit: cover;" autoplay id='remote_video' height="100%" width="100%"></video>
                 <div class='local_video_container'>
                     <video class='local_video' id='local_video'  autoplay></video>
                 </div>
@@ -105,10 +112,19 @@
                     </button>
                 </div>
             </div>
+          <div id="chat_visible_button" class="display_none">
+            <img src="./utils/images/chat.png" height="30px" width="30px">
+          </div>
+
+
+          
         </div>
-        <div class='messenger_container'>
+        <div class='messenger_container' id="messenger_container">
+            <div  id="hide_chat_button">
+                <img src="./utils/images/hide.png" height="30px" width="30px">
+            </div>
             <div class='messages_container' id='messages_container'></div>
-            <div class='new_message_container display_none' id='new_message'>
+            <div class='new_message_container ' id='new_message'>
                 <input class='new_message_input' id='new_message_input' type='text' placeholder="Type your message..."></input>
                 <button class='send_message_button' id='send_message_button'>
                     <img class='send_message_button_image' src='./utils/images/sendMessageButton.png'></image>
