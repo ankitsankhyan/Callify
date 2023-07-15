@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + './public/index.html')
  });
 let connectedPeers = [];
+let connectedPeersStrangers = [];
  io.on('connection', (socket) => {
   
     // ##################### PRE OFFER ############################
@@ -73,6 +74,23 @@ let connectedPeers = [];
         }
     });
     
+    socket.on('change-stranger-connection-status' , (data) => {
+        const {status} = data;
+        if(status){
+            connectedPeersStrangers.push(socket.id);
+        }else{
+            // removing from the stranger Peer connection array
+            const newConnectedPeersStrangers = connectedPeersStrangers.filter((peer) => {
+                return peer !== socket.id;
+             })
+        
+             connectedPeersStrangers = newConnectedPeersStrangers;
+
+        }
+        console.log(connectedPeersStrangers);    
+    });
+
+
     socket.on('user-hanged-up', (data) => {
        const {connectedUserSocketId} = data;
        const connectedPeer = connectedPeers.find(
@@ -93,8 +111,13 @@ let connectedPeers = [];
      const newConnectedPeers = connectedPeers.filter((peer) => {
         return peer !== socket.id;
      })
-
+     
      connectedPeers = newConnectedPeers;
+
+     const newConnectedPeersStrangers = connectedPeersStrangers.filter((peer) => {
+        return peer !== socket.id;
+        })
+        connectedPeersStrangers = newConnectedPeersStrangers;
     console.log('user disconnected');
     })
 

@@ -63,3 +63,7 @@ export const sendDataUsingWebRTCSignaling = (data) => {
 export const sendUserHangedUp = (data) => {
   socketIO.emit("user-hanged-up", data);
 }
+export const changeStrangerConnectionStatus = (data) => {
+  console.log('data: ', data)
+  socketIO.emit("change-stranger-connection-status", data);
+}

@@ -234,7 +234,12 @@ export const updateUIAfterHangUp = (callType) => {
 
 
 }
+export const updateStrangerCheckbox = (allowConnection) => {
+    console.log('running fine');
+   const checkboxCheckImg = document.getElementById('allow_strangers_checkbox_image');
+   allowConnection ? showElement(checkboxCheckImg) : hideElement(checkboxCheckImg);
 
+}
 // ui helper functions
 const enableDashboard = () => {
    const dashboardBlocker = document.getElementById('dashboard_blur');

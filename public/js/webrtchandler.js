@@ -161,7 +161,14 @@ const rejectCallHandler = () => {
 };
 
 const callingDialogRejectCallHandler = () => {
-  console.log("rejecting the call");
+ 
+    const data = {
+      connectedUserSocketId: connectedUserDetails.socketId,
+      callType: connectedUserDetails.callType
+    }
+
+    closePeerConnectionAndResetState();
+    wss.sendUserHangedUp(data);
 };
 
 const sendPreOfferAnswer = (preOfferAnswer, callerSocketId = null) => {
@@ -329,8 +336,7 @@ export const handleConnectedUserHangedUp = ()=>{
 }
 
 export const closePeerConnectionAndResetState = ()=>{
-  console.log("closing peer connection and resetting state");
-  console.log(connectedUserDetails.callType, constants.callType.CHAT_PERSONAL_CODE);
+  
   if(peerConection){
     peerConection.close();
     peerConection = null;
