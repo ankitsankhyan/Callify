@@ -58,6 +58,7 @@ const strangerVideoButton = document.getElementById("stranger_video_button");
 
 strangerChatButton.addEventListener("click", () => {
 //  Logic
+strangerUtils.getStrangerSocketIdAndConnect(constants.callType.CHAT_STRANGER);
   
 });
 // register event for 
@@ -71,7 +72,7 @@ checkbox.addEventListener("click", () => {
 
 })
 strangerVideoButton.addEventListener("click", () => {
-
+   strangerUtils.getStrangerSocketIdAndConnect(constants.callType.VIDEO_STRANGER);
 });
 // event listeners for mic buttons
 

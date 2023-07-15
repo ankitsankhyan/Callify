@@ -74,7 +74,7 @@ let connectedPeersStrangers = [];
         }
     });
     
-    socket.on('change-stranger-connection-status' , (data) => {
+    socket.on('stranger-connection-status' , (data) => {
         const {status} = data;
         if(status){
             connectedPeersStrangers.push(socket.id);
@@ -89,7 +89,22 @@ let connectedPeersStrangers = [];
         }
         console.log(connectedPeersStrangers);    
     });
+     socket.on('get-stranger-socket-id', () => {
+        let randomStrangerSocketId;
+        const filteredPeer = connectedPeersStrangers.filter((peer) => {
+            return peer !== socket.id;
+        });
+        if(filteredPeer.length > 0){
+           randomStrangerSocketId = filteredPeer[Math.floor(Math.random() * filteredPeer.length)];
+        }else{
+           randomStrangerSocketId = null;
+        }
 
+        const data = {
+            randomStrangerSocketId: randomStrangerSocketId
+        }
+        io.to(socket.id).emit('stranger-socket-id', data);
+     });
 
     socket.on('user-hanged-up', (data) => {
        const {connectedUserSocketId} = data;

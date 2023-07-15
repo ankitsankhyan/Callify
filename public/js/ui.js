@@ -43,6 +43,19 @@ export const removeAllDialogs = ()=>{
     dialog.querySelectorAll('*').forEach(n => n.remove());
 }
 
+export const showNoStrangerAvailableDialog = () => {
+    const noStrangerAvailableDialog = elements.getInfoDialog('No stranger available', 'Please try again later');
+    
+   if(noStrangerAvailableDialog){
+    const dialog = document.getElementById('dialog');
+    dialog.appendChild(noStrangerAvailableDialog);
+    setTimeout(()=>{
+        removeAllDialogs();
+    }, [3000]);
+    
+   }
+}
+
 export const showInfoDialog = (preOfferAnswer) => {
     let infoDialog = null;
     if(preOfferAnswer === constants.preOfferAnswer.CALL_REJECTED){
@@ -67,10 +80,10 @@ export const showInfoDialog = (preOfferAnswer) => {
    
 }
 export const showCallElements = (callType) => {
-    if(callType === constants.callType.CHAT_PERSONAL_CODE){
+    if(callType === constants.callType.CHAT_PERSONAL_CODE || callType === constants.callType.CHAT_STRANGER){
         showChatCallElements();
     }
-    if(callType === constants.callType.VIDEO_PERSONAL_CODE){
+    if(callType === constants.callType.VIDEO_PERSONAL_CODE || callType === constants.callType.VIDEO_STRANGER){
         showVideoCallElements();
     }
 }
