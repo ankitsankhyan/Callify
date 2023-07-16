@@ -1,0 +1,6 @@
+![Starting image](screenshots/image.png)
+![Full Screen](screenshots/fullscreen.png)
+![Chat Call](screenshots/chatcall.png)
+![Chat](screenshots/chat.png)
+![ChatBox](screehshots/chatBox.png)
+![incoming Call](screenshots/incomingCall.png)
