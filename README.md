@@ -1,6 +1,6 @@
 # Callify - Make Calls to Strangers!
 
-![Callify Logo](path/to/your/logo.png) <!-- Optional: You can add a logo here -->
+![Callify Logo](./public/utils/images/logo.png) <!-- Optional: You can add a logo here -->
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -60,11 +60,11 @@ We welcome contributions from the community to improve Callify. If you'd like to
 
 ## License
 
-[Insert your license information here]
+[MIT]
 
 ## Contact
 
-If you have any questions, suggestions, or need support, please feel free to contact our team at [contact@email.com].
+If you have any questions, suggestions, or need support, please feel free to contact our team at [ankitsankhyan@email.com].
 
 ---
 
