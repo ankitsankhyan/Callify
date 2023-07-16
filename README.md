@@ -28,12 +28,6 @@ as well. It is having another feature in which if you enable accept call with st
 
 ## Getting Started
 
-### Prerequisites
-
-- Android or iOS device with an internet connection.
-- Account registration may be required for certain features.
-
-
 ## How to Use
 
 1. **Make Calls**: Press the "Call" button to call a random stranger. Please be respectful and considerate during your calls.
@@ -68,4 +62,4 @@ If you have any questions, suggestions, or need support, please feel free to con
 
 ---
 
-Thank you for using Callify! We hope you enjoy making new connections and having meaningful conversations with people from all over the world. Remember to use the app responsibly and respectfully. Happy calling!
+We welcome contributions to improve Callify! If you'd like to contribute, please follow the guidelines in the [Contributing](#contributing) section. Thank you for your interest in making Callify even better!
