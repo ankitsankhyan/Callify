@@ -7,6 +7,11 @@ export const updatePersonalCode = (personalCode)=>{
     personalCodeParagraph.innerHTML = personalCode;
 }
 
+export const showLocalVideo =()=>{
+    const video_player = document.getElementById('video_player');
+    showElement(video_player);
+}
+
 export const updateLocalVideo = (stream) => {
   const localVideo = document.getElementById('local_video');
   

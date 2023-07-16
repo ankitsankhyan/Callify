@@ -26,6 +26,7 @@ export const getLocalPreview = () => {
     .then((stream) => {
       ui.showVideoButtons();
       ui.updateLocalVideo(stream);
+      ui.showLocalVideo();
       store.setLocalStream(stream);
       store.setCallState(constants.callState.CALL_AVAILABLE);
     })

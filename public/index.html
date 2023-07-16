@@ -11,7 +11,7 @@
            
             <div class='logo_container'>
                 <img src='./utils/images/logo.png' height="100px" width="100px"></img>
-                <img src="./utils/images/cross3.png" style="background-color:white" id="close_dashboard_button" class="closeTab" height="30px" width="30px">
+                <img src="./utils/images/cross3.png" id="close_dashboard_button" class="closeTab" height="30px" width="30px">
             </div>
             <div>
                 <div class='description_container'>
@@ -75,8 +75,10 @@
                     <img src='./utils/images/logo.png' height="400px" width="400px"></img>
                 </div>
                 <video class='remote_video display_none' style="object-fit: cover;" autoplay id='remote_video' height="100%" width="100%"></video>
-                <div class='local_video_container'>
-                    <video class='local_video' id='local_video'  autoplay></video>
+                <div class='local_video_container display_none' id="video_player">
+                    <video class='local_video' id='local_video'  autoplay>
+
+                    </video>
                 </div>
                 <div class='call_buttons_container display_none' id='call_buttons'>
                     <button class='call_button_small' id='mic_button'>
@@ -124,7 +126,7 @@
                 <img src="./utils/images/hide.png" height="30px" width="30px">
             </div>
             <div class='messages_container' id='messages_container'></div>
-            <div class='new_message_container ' id='new_message'>
+            <div class='new_message_container display_none' id='new_message'>
                 <input class='new_message_input' id='new_message_input' type='text' placeholder="Type your message..."></input>
                 <button class='send_message_button' id='send_message_button'>
                     <img class='send_message_button_image' src='./utils/images/sendMessageButton.png'></image>
