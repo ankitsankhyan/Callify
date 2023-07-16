@@ -5,9 +5,6 @@
 ## Table of Contents
 - [Introduction](#introduction)
 - [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
 - [How to Use](#how-to-use)
 - [Privacy and Safety](#privacy-and-safety)
 - [Contributing](#contributing)
