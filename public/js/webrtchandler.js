@@ -194,7 +194,7 @@ const callingDialogRejectCallHandler = () => {
 };
 
 const sendPreOfferAnswer = (preOfferAnswer, callerSocketId = null) => {
-
+    
   const data = {
     callerSocketId: connectedUserDetails.socketId,
     preOfferAnswer,
