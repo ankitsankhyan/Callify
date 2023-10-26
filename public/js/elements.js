@@ -3,7 +3,7 @@ export const getIncomingCallDialog = (
     acceptCallHandler,
     rejectCallHandler
   ) => {
-    console.log("getting incoming call dialog");
+   
     const dialog = document.createElement("div");
     dialog.classList.add("dialog_wrapper");
     const dialogContent = document.createElement("div");
